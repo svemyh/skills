@@ -1,0 +1,5 @@
+This repository vendors the following third-party material:
+
+- `skills/anduril/SKILL.md` — from https://github.com/adisinghstudent/anduril (MIT). Copyright remains with the original author; see that repository for the full license text.
+
+Other skills in `skills/` are original to this repository unless noted in a skill’s header.
