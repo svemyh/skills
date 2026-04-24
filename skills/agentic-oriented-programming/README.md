@@ -11,5 +11,5 @@ Installable skill that teaches coding agents a practical architecture doctrine f
 ## Install
 
 ```bash
-npx skills add svemyh/skills --skill agentic-oriented-programming
+npx skills add <org-or-user>/<repo> --skill agentic-oriented-programming
 ```

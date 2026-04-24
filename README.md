@@ -1,44 +1,46 @@
-# svemyh/skills
+# Agent skills (multi-skill repo)
 
-Public monorepo of [agent skills](https://skills.sh) for Cursor, Codex, Claude Code, and other `SKILL.md`-compatible agents.
+`SKILL.md` files for **Cursor, Codex, Claude Code**, and other agents that load the skills format.
 
-**Layout:** one GitHub repo, each skill in `skills/<name>/SKILL.md`. This is the same **multi-skill** pattern as [Aradotso/trending-skills](https://github.com/Aradotso/trending-skills) — a skill does **not** have to be its own repository.
+**Layout:** one folder per skill under `skills/<slug>/SKILL.md`.
 
-## Install (pick one skill)
+## Install
 
-```bash
-# Interactive: choose from this repo
-npx skills add svemyh/skills
-```
-
-Or install a specific skill:
+Interactive picker (point at this repository’s URL when published):
 
 ```bash
-npx skills add svemyh/skills --skill agentic-oriented-programming
-npx skills add svemyh/skills --skill chip-city-cookies
-npx skills add svemyh/skills --skill anduril
-npx skills add svemyh/skills --skill skills-sh
-npx skills add svemyh/skills --skill legora
+npx skills add <org-or-user>/<repo>
 ```
 
-## skills.sh install pages
+Install one skill:
 
-| Skill | Page |
+```bash
+npx skills add <org-or-user>/<repo> --skill agentic-oriented-programming
+npx skills add <org-or-user>/<repo> --skill enterprise-boardroom
+npx skills add <org-or-user>/<repo> --skill stark-lime-ui
+npx skills add <org-or-user>/<repo> --skill warm-pastel-bakery
+npx skills add <org-or-user>/<repo> --skill skills-sh
+```
+
+## Visual design (brand-neutral)
+
+These are **aesthetic baselines** only — no tie to any specific company or trademark.
+
+| Slug | When to use |
 | --- | --- |
-| `agentic-oriented-programming` | [skills.sh/…/agentic-oriented-programming](https://skills.sh/svemyh/skills/agentic-oriented-programming) |
-| `chip-city-cookies` | [skills.sh/…/chip-city-cookies](https://skills.sh/svemyh/skills/chip-city-cookies) |
-| `anduril` | [skills.sh/…/anduril](https://skills.sh/svemyh/skills/anduril) |
-| `skills-sh` | [skills.sh/…/skills-sh](https://skills.sh/svemyh/skills/skills-sh) |
-| `legora` | [skills.sh/…/legora](https://skills.sh/svemyh/skills/legora) |
+| `enterprise-boardroom` | **Default** for professional / B2B / institutional marketing (hierarchy, stoneware neutrals, compliance-friendly). |
+| `stark-lime-ui` | Dark stage, sharp geometry, single **lime** accent, minimal industrial product UI. |
+| `warm-pastel-bakery` | Cream paper, rose / mint / powder, soft radii, warm retail and food DTC. |
 
-## Included skills
+The **website-agent** service (in the repo that consumes this submodule) embeds all three in the system prompt, with **enterprise-boardroom** as the default when the user has not specified another vibe.
 
-- **`agentic-oriented-programming`** — coding doctrine for agent-era software: locally simple, globally constrained, narrow boundaries.
-- **`chip-city-cookies`** — UI constraints aligned with [chipcitycookies.com](https://chipcitycookies.com/) (warm bakery palette, marketing patterns).
-- **`anduril`** — Anduril-style product UI constraints (vendored from [adisinghstudent/anduril](https://github.com/adisinghstudent/anduril), MIT; see [NOTICE](NOTICE)). You can also `npx add-skill adisinghstudent/anduril` for the upstream single-repo install.
-- **`skills-sh`** — how GitHub + `npx` + [skills.sh](https://skills.sh) fit together (monorepo vs one skill per repo).
-- **`legora`** — [Legora](https://legora.com/)–style enterprise legal-AI marketing: hierarchy, lawyer-native tone, compliance-forward (not toy or consumer-cute UI).
+## Other skills
+
+| Slug | Role |
+| --- | --- |
+| `agentic-oriented-programming` | Architecture doctrine for codebases edited by agents (boundaries, invariants, narrow interfaces). |
+| `skills-sh` | How multi-skill repos and the public skills index fit together. |
 
 ## License
 
-MIT. The **anduril** skill text is third-party (MIT) — [NOTICE](NOTICE).
+MIT. Third-party text used as a **starting point** for one skill is noted in [NOTICE](NOTICE) with upstream license (MIT).

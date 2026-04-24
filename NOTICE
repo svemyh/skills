@@ -1,5 +1,5 @@
 This repository vendors the following third-party material:
 
-- `skills/anduril/SKILL.md` — from https://github.com/adisinghstudent/anduril (MIT). Copyright remains with the original author; see that repository for the full license text.
+- `skills/stark-lime-ui/SKILL.md` — derived from a public MIT design-system document (structural and token guidance). The upstream author’s license applies to the original; this fork’s text is rewritten to be **brand- and company-neutral** for this repository and for downstream use in agent runtimes.
 
-Other skills in `skills/` are original to this repository unless noted in a skill’s header.
+Other skills under `skills/` are original to this repository except where a skill header or this file states otherwise.
