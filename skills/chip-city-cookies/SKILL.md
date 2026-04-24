@@ -24,68 +24,35 @@ Reference the live site for copy tone (locations, shipping, catering, weekly fla
 - Hero lines can be short and punchy; body copy can mention rotation (e.g. weekly flavors), shipping, and local stores when relevant.
 - Use “ooey-gooey” and flavor-forward language sparingly; avoid stacking superlatives.
 
-### Colors
+### Colors (measured from production CSS)
 
-**Core palette** (tune to match production CSS if the site palette shifts)
+**Source:** [chipcitycookies.com](https://chipcitycookies.com/) main stylesheet (`/_next/static/css/*.css`, Next.js + Tailwind). These are the real `cc*` design tokens (not approximations).
 
 ```css
-/* Backgrounds */
---bg-cream: #fbf6f0;        /* warm bakery light */
---bg-sugar: #fff8f2;         /* alt section */
---bg-ink: #1c1410;           /* deep brown-black — footer / strong contrast */
---bg-white: #ffffff;
-
-/* Text */
---text-primary: #1c1410;     /* body on light */
---text-secondary: #5c4a42;
---text-muted: #7d6b62;
---text-on-dark: #fbf6f0;
-
-/* Brand / accent (sprinkle-pink, primary CTAs) */
---accent-pink: #e85a8a;      /* primary button / key links on light */
---accent-pink-hover: #d14a7a;
---accent-sprinkle: #f4a6c1;  /* soft highlights, badges, chips less critical than CTA */
-
-/* “Chocolate” (secondary actions, icon strokes) */
---chocolate: #3d2c26;
-
-/* Semantic */
---color-error: #c42d2d;
---color-error-bg: #fff5f5;
---color-success: #2d6a4f;
---color-success-bg: #edf7f1;
-
-/* Borders (soft, bakery — not sharp tech grey) */
---border-soft: #e8ded4;
---border-warm: #d4c4b8;
+/* Site tokens (rgb in production) */
+--ccBackground:     #faf5eb;  /* page / header — warm paper */
+--ccBackgroundDarker: #f4efd9; /* “newsletter” card / tinted panels */
+--ccPink:   #f09fb1;  /* primary CTA fill, key brand */
+--ccBlue:   #bcdce5;  /* secondary button (e.g. Find a Location) */
+--ccGreen:  #95dbb8;  /* newsletter / insider actions */
+--ccYellow: #f8dd81;  /* supporting accent in system */
+--ccBlack:  #231f20;  /* type, dark fills, borders with brand */
 ```
 
-**Tailwind-style tokens** (if using Tailwind)
-
-```js
-colors: {
-  chip: {
-    cream: '#fbf6f0',
-    sugar: '#fff8f2',
-    ink: '#1c1410',
-    pink: '#e85a8a',
-    'pink-hover': '#d14a7a',
-    sprinkle: '#f4a6c1',
-    chocolate: '#3d2c26',
-  }
-}
-```
+**Vibe:** **pastel bakery** — pink + mint + powder blue on **cream** paper, **soft** not neon. Product photography and cookie-illustration SVGs; hero uses full-bleed cookie photography (`choc-chip*.webp`).
 
 **Usage**
 
-- On **light** sections: `cream` / `sugar` backgrounds, `ink` text, `accent-pink` for one primary CTA per viewport where emphasis is needed.
-- On **dark** (footers, promos): `ink` or near-black; use `text-on-dark` and `accent-pink` or white-outline buttons; keep contrast **WCAG AA** minimum.
-- Avoid Anduril-style **neon/lime** — Chip City is warm and confectionery, not defense-tech.
+- On **light** sections: `ccBackground` / `ccBackgroundDarker`, text on `ccBlack`. Primary action: **pink** button (`ccPink` + white text); secondary: **black** fill or **blue** outline pill.
+- **Borders** often `border-ccBlack` at 1px with rounded-full / rounded-lg (playful, not Anduril-sharp).
+- Avoid Anduril-style **lime** on black — wrong category (Chip City is confectionery DTC, not defense UI).
 
-### Typography
+### Typography (measured + observed)
 
-- Prefer a **rounded humanist** stack for marketing: system UI rounded feel or `Nunito`, `DM Sans`, `Plus Jakarta Sans` — **only if the project has no brand font**; if the product already loads a font, align with the live site.
-- Headings: friendly, **medium** weight (500–600) — not ultra-light like Anduril, not extra-bold poster type unless the art direction explicitly asks.
+- **Body / UI:** [Mulish](https://fonts.google.com/specimen/Mulish) variable from Google Fonts (`family=Mulish:ital,wght@0,200..1000;1,200..1000`) — loaded on the live site.
+- **Display / marketing headlines:** `font-gooper` in components (e.g. H1 *Chip City Cookies*, section H2s) — **Gooper** is the expressive rounded face; load the same font files/weights if you match the brand.
+- **H1 treatment:** `special-text` class on hero (outlined / stacked display treatment over photography).
+- Headings: friendly, **not** Anduril-thin; section titles use Gooper at large sizes (`text-4xl`–`text-6xl` range on homepage).
 - **Sentence case** for most UI strings; **title case** for short nav labels is OK.
 - Avoid all-caps blocks except small labels (e.g. “NATIONWIDE SHIPPING”) — keep `letter-spacing` subtle (`0.02em`–`0.04em`), not the wide Anduril nav tracking unless matching the reference site.
 - Base body: `16px`–`18px` on marketing pages, `line-height` ~1.5–1.6.
@@ -107,13 +74,12 @@ colors: {
 
 **Primary button**
 
-- Background: `accent-pink`, text: white, `font-weight: 500`–`600`, comfortable padding.
-- Hover: `accent-pink-hover` (or `brightness` / `filter`), respect `focus-visible` ring in **ink** or **pink** with sufficient contrast.
-- `border-radius`: match cards (e.g. `9999px` pill or `12px` rounded — **pick one system and reuse**).
+- Production pattern: `bg-ccPink` + `border border-ccBlack` + **uppercase** + **rounded-full** (see homepage *Order Now*). Text often **white** on hero; elsewhere pair with `ccBlack` for contrast as built.
+- Hover: site uses `hover:bg-ccPink/80` (or similar). Respect `focus-visible:ring` on the shared button primitive.
 
 **Secondary button**
 
-- Outline: `1–2px solid` chocolate or `border-warm`, background transparent or cream.
+- Example: `bg-ccBlue` + `border-ccBlack` + `text-ccBlack` (e.g. *Find A Location* pill).
 
 **Cards (flavor tiles, promos)**
 
@@ -137,13 +103,13 @@ colors: {
 
 ### Stack alignment (if engineering)
 
-- Prefer project primitives first; if none, accessible foundations (e.g. Radix / React Aria / Base UI) with Chip City theming.
-- **Tailwind**: extend theme with `chip.*` colors above; use `cn` / `clsx` + `tailwind-merge` for variants.
+- Live site: **Next.js** + **Tailwind** + **Radix**-style primitives (e.g. `Dialog` for modals, `button` with `ring-offset-background`).
+- Map tokens to the production names: `ccBackground`, `ccPink`, `ccBlue`, `ccBlack`, `ccGreen`, `ccBackgroundDarker` in Tailwind `extend`.
 
 ---
 
 ## Reference
 
-- [chipcitycookies.com](https://chipcitycookies.com/) — tone, structure (Order, locations, shipping, catering, flavors, social).
+- [chipcitycookies.com](https://chipcitycookies.com/) — tone, structure, Next.js + Tailwind implementation.
 
-**Note:** This skill describes a **plausible, cohesive** system consistent with a warm, modern cookie brand. Re-snapshot the production site and adjust exact hex values if the published CSS changes.
+**Audit note:** Color tokens in this file were **extracted** from the published CSS bundle; fonts confirmed via `<link href="...Mulish...">` and `font-gooper` class usage. Re-crawl if the CSS fingerprint (`cdaa9ac2…css` etc.) changes after deploys.

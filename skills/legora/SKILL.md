@@ -30,20 +30,24 @@ When building or reviewing marketing and product surfaces that should feel like 
 - **Shadows:** minimal; when used, **soft and low** — enterprise SaaS, not DTC e-commerce.
 - **No** rainbow gradients, **no** neon accents, **no** playful brick/blocks — that is a different brand entirely.
 
-**Color (token-style — verify against live [legora.com](https://legora.com/) CSS as the brand evolves)**
+**Color & stack (measured from [legora.com](https://legora.com/) Framer export)**
 
-- **Backgrounds:** near-white and warm off-white (paper-like), with **optional** deep sections for contrast (charcoal / near-black) for hero or footer — keep **contrast** WCAG AA+ for all text.
-- **Text:** near-black body; **muted** secondary for supporting lines (not illegible light grey on white).
-- **Primary accent:** one **disciplined** accent (often warm **gold/amber** or a **refined** brand color) — use for **one** primary CTA per view and key links, not scattered highlights.
-- **Trust blocks:** compliance badges (ISO, SOC, GDPR) should read as **sober** — icon + label, no carnival styling.
+- **Stack:** [Framer](https://www.framer.com/) — inline `data-framer-font-css` + **Framer Cloud** assets (not a hand-rolled GitHub design system in the open).
+- **Page shell:** deep **charcoal / near-black** text and UI tokens mixed with **off-white / paper** section backgrounds. Hex values present in the shipped HTML/CSS include (non-exhaustive):
+  - **Neutrals / type:** `#0A0A0A`, `#181614`, `#191614`, `#1c221c`, `#2d2d2d`, `#363636`, `#474747`, `#6b6b6b`, `#989898`, `#c3c3c3`, `#d0d0d0`
+  - **Light surfaces:** `#FBFBF9`, `#FEFEFC`, `#f4f4f0`, `#f2f2ee`, `#ecece7`, `#e0e0dc`, `#e1dfdb` — **warm, stone-like** off-whites (not pure `#fff` everywhere)
+  - **Accents (brand-adjacent):** `#a1c699` (sage), `#edfedc` / `#d0f289` (luminous **lime** highlights), `#bdd4f0` (cool **sky** for secondary emphasis), `#e68846` (terracotta for warmth), `#967868` (muted mauve/brown for subtle contrast), `#98a7aa` (slate for secondary text on light)
+  - **Deep / forest:** `#00301e` (very dark **green** for high-contrast moments)
+- **Vibe:** “**Serious law + calm tech**” — **forest/sage** + **sage-lime** energy on **stoneware** backgrounds; use **one** strong accent per scroll region; compliance rows stay on **subdued** neutrals.
+- **Trust blocks (ISO, SOC, GDPR):** **sober** neutrals, no illustration spam — icon + short line of copy; same Framer component language as the rest of the page.
 
-**Typography**
+**Typography (measured from `fonts.gstatic` + Framer in-page `font-family` rules)**
 
-- **Sans-serif, enterprise-grade** (e.g. class of grotesk / neo-grotesk with good legibility) — **match the live site** if a font is already defined in the product.
-- **Headlines:** confident, often **tight** line-height on large type; **avoid** comedic or overly casual phrasing in H1s.
-- **Subheads / section intros:** **short**, declarative — *Smarter tools, better outcomes* energy: outcome-led, not feature laundry lists in the hero.
-- **Body:** comfortable reading size (`16px`+), **calm** line length (`max-width` for long prose).
-- **Labels / nav:** clear, often **title case** or **sentence case**; avoid all-caps walls except small UI chrome.
+- **Display / editorial:** [Playfair Display](https://fonts.google.com/specimen/Playfair+Display) (multiple weights, loaded for Latin + Cyrillic in their bundle) — use for **hero/brand moments** and premium headline rhythm.
+- **Hand-drawn / emphasis accents:** [Kalam](https://fonts.google.com/specimen/Kalam) (handwriting-adjacent) — **sparingly** (marketing highlights, not body).
+- **Mono / data / system:** [Fragment Mono](https://fonts.google.com/specimen/Fragment+Mono) — technical, compliance, or “lab note” text if matching their pattern.
+- **Proprietary / brand:** at least one **Framer-uploaded** `.woff2` (e.g. `framerusercontent.com/assets/...woff2`) for lockups; **check Network → Font** in DevTools for the exact **family** name in CSS.
+- **Subheads / section intros:** **short**, declarative — *Smarter tools, better outcomes* — outcome-led; pair Playfair with a calm sans from their stack in body (Framer’s CSS maps components to the families above; body copy in browser often lands on a **neutral sans** — verify in Computed styles when pixel-matching).
 
 **Imagery**
 
@@ -85,4 +89,4 @@ When building or reviewing marketing and product surfaces that should feel like 
 - [legora.com](https://legora.com/) — live hierarchy, copy, and compliance presentation.
 - [Most Studios — Legora case study](https://moststudios.com/casestudy/legora) — *enterprise scale* brand + site as one system, *audience is experienced*.
 
-**Disclaimer:** This skill distills **observable** marketing patterns and public case-study language — not a trademark claim. Re-check **legora.com** and brand guidelines when matching production tokens.
+**Disclaimer:** Copy and **hex samples** are from a **crawl of public Framer export HTML**; Framer may update tokens without notice. Re-check in DevTools (Computed color + **Network → Font**) when pixel-matching. Not a trademark claim; official brand books beat this doc.

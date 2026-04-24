@@ -207,3 +207,29 @@ colors: {
 - Error states: red text (#FF3535), light red background (#fef2f2)
 - Success states: green text (#16a34a), light green background (#f0fdf4)
 - Disabled: `opacity: 0.5`, `cursor: not-allowed`
+
+---
+
+## Measured from [anduril.com](https://www.anduril.com/) production (defense company site, not the design-skill doc alone)
+
+**Source:** main stylesheet `assets/css/style.*.css` + `index.html` embeds, **2026-04** crawl. Use this to align “Anduril **product** look” with their **public web** stack.
+
+**Theme variables (from CSS `:root` / `.theme-dark` / `.theme-light`)**
+
+- **Dark (default for immersive UI):** `--theme-color-background: #010101`, `--theme-color-text: #fff` (near **pure** black, not #1a1a1a, for their WebGL/hero stage).
+- **Light:** `--theme-color-background: #fff`, `--theme-color-text: #010101`.
+- **Lime (signature, including loading nub in inline script):** `#DFF140` (matches the skill’s `--accent-lime`).
+- **CMS-driven slice example:** `Mid Dark Gray` announcement band `#6C6E6B` (Sanity) with **contrast** text `#FFFFFF` — for editorial/banner calls-to-action, not the lime CTA.
+
+**Typography (actual `@font-face` on site)**
+
+- **Elios** — `Elios-Regular` only in the preloaded set (400): used for “detail” / product-adjacent lines (e.g. *Designed by Anduril / Built in Ohio* in some slices).
+- **Helvetica Now Display** (full weight axis preloaded, 50–950): `h1` is **~5rem** desktop, **~2.7rem** mobile, **w700** on `h1`; `h2`–`h7` and `p` use **HelveticaNowDisplay** with **tight** negative `letter-spacing` and **4xx** body size (~1.05rem) — the **mechanical, confident** grotesk the skill describes.
+- **Base `html` font size:** 14px up to 1280px, then **fluid** `calc()` up to 24px cap (large viewports) — data-dense, responsive type scale.
+- **Fallbacks:** `Helvetica, Arial, sans-serif` after **Helvetica Now Display** in the CSS rules.
+
+**Motion / craft**
+
+- **Lenis**-style smooth scroll (script preload `lenis`); **Theatre** / **Hydra**-driven 3D + video scenes (defense product showcases). Heavy **WebGL/Three** asset pipeline; **not** a flat marketing page.
+
+**Mental model for agents:** the **vendored skill above** is a **simplified** UI kit. The **live** site is a **black-stage + lime-accent + Helvetica Now** cinematic experience; match tokens and fonts when the task says “**like anduril.com**,” not only the abstract rules.
