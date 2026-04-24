@@ -1,6 +1,6 @@
 ---
 name: chip-city-cookies
-description: Opinionated UI constraints for Chip City Cookies web experiences — warm bakery aesthetic aligned with chipcitycookies.com.
+description: Chip City Cookies UI — full pastel spectrum (pink, powder blue, cream, mint) on warm paper; chipcitycookies.com aligned.
 ---
 
 # Chip City Cookies design system
@@ -24,28 +24,37 @@ Reference the live site for copy tone (locations, shipping, catering, weekly fla
 - Hero lines can be short and punchy; body copy can mention rotation (e.g. weekly flavors), shipping, and local stores when relevant.
 - Use “ooey-gooey” and flavor-forward language sparingly; avoid stacking superlatives.
 
-### Colors (measured from production CSS)
+### Colors — full pastel spectrum (not “pink + brown only”)
 
-**Source:** [chipcitycookies.com](https://chipcitycookies.com/) main stylesheet (`/_next/static/css/*.css`, Next.js + Tailwind). These are the real `cc*` design tokens (not approximations).
+**Source:** Aligned with [chipcitycookies.com](https://chipcitycookies.com/) production `cc*` tokens (Next.js + Tailwind). The brand reads as a **four-pastel system** on warm paper — use **all** of them in layout, not a single hero color.
+
+**Canonical pastels (use across UI, sections, and components)**
+
+| Token | Hex | Role |
+| --- | --- | --- |
+| **Pink** | `#f09fb1` | Primary CTAs, key links, “hero” emphasis, selected chips |
+| **Powder blue** | `#bcdce5` | Secondary actions, info panels, “Find a location”-style pills, cool relief next to pink |
+| **Cream** | `#f4efda` | Section bands, cards, modals, newsletter/insider shells — **large** fields of color (not only white) |
+| **Mint** | `#96dbb8` | Success/positive, insider signup, “fresh batch” energy, alternate buttons or badge fills |
+
+**Supporting (from live CSS — typography, borders, extra punch)**
 
 ```css
-/* Site tokens (rgb in production) */
---ccBackground:     #faf5eb;  /* page / header — warm paper */
---ccBackgroundDarker: #f4efd9; /* “newsletter” card / tinted panels */
---ccPink:   #f09fb1;  /* primary CTA fill, key brand */
---ccBlue:   #bcdce5;  /* secondary button (e.g. Find a Location) */
---ccGreen:  #95dbb8;  /* newsletter / insider actions */
---ccYellow: #f8dd81;  /* supporting accent in system */
---ccBlack:  #231f20;  /* type, dark fills, borders with brand */
+--ccBackground:     #faf5eb;   /* default page / header when not on cream band */
+--ccYellow:         #f8dd81;  /* small highlights, icon fills, rare emphasis */
+--ccBlack:          #231f20;  /* type, strong borders, icon strokes — not the only “dark” with pastels */
 ```
 
-**Vibe:** **pastel bakery** — pink + mint + powder blue on **cream** paper, **soft** not neon. Product photography and cookie-illustration SVGs; hero uses full-bleed cookie photography (`choc-chip*.webp`).
+**Vibe:** **Full-spectrum bakery pastel** — rotate **pink, blue, cream, mint** through the page: alternating section backgrounds, multi-color **icon** or **illustration** accents, flavor tags, and cards. **Do not** reduce the brand to “pink CTA on brown text”; that underuses the system.
 
-**Usage**
+**Usage rules**
 
-- On **light** sections: `ccBackground` / `ccBackgroundDarker`, text on `ccBlack`. Primary action: **pink** button (`ccPink` + white text); secondary: **black** fill or **blue** outline pill.
-- **Borders** often `border-ccBlack` at 1px with rounded-full / rounded-lg (playful, not Anduril-sharp).
-- Avoid Anduril-style **lime** on black — wrong category (Chip City is confectionery DTC, not defense UI).
+- **Sections:** alternate **cream `#f4efda`** with **default paper `#faf5eb`** or a **tinted row** (e.g. mint at 15–20% opacity or a strip of **powder blue** behind a quote) so the scroll feels **colorful**, not one flat beige.
+- **CTAs:** primary can stay **pink**; place **blue** and **mint** on **equal** footing for secondary, tertiary, and context-specific actions (shipping vs. local vs. insider).
+- **Cards & modules:** at least one **non-pink** pastel on large surfaces per viewport (cream band + blue **or** mint header strip, etc.).
+- **Borders / chrome:** `border-ccBlack` (or soft warm grey) on pills — keep **playful** radii, not Anduril-sharp.
+- **Photography:** food photos stay warm; **UI chrome** can use the **full pastel set** around them.
+- Avoid defense-style **lime-on-black** or **neon** — this is a **soft** DTC palette.
 
 ### Typography (measured + observed)
 
@@ -72,23 +81,22 @@ Reference the live site for copy tone (locations, shipping, catering, weekly fla
 
 ### Components
 
-**Primary button**
+**Buttons (spread pastels; don’t default everything to pink)**
 
-- Production pattern: `bg-ccPink` + `border border-ccBlack` + **uppercase** + **rounded-full** (see homepage *Order Now*). Text often **white** on hero; elsewhere pair with `ccBlack` for contrast as built.
-- Hover: site uses `hover:bg-ccPink/80` (or similar). Respect `focus-visible:ring` on the shared button primitive.
+- **Primary (order / main goal):** `bg-[#f09fb1]` + `border border-ccBlack` + **uppercase** + **rounded-full** — *Order Now* pattern. Text **white** or `ccBlack` per contrast on background.
+- **Secondary / wayfinding:** `bg-[#bcdce5]` + `border-ccBlack` + `text-ccBlack` — e.g. *Find a location*.
+- **Positive / insider / “join”:** `bg-[#96dbb8]` + `border-ccBlack` — e.g. newsletter / *Sign up*; pairs well on **`#f4efda`** panels.
+- Hover: opacity or `/90` tints; keep **focus-visible** rings visible on all variants.
 
-**Secondary button**
+**Cards, bands, and promos**
 
-- Example: `bg-ccBlue` + `border-ccBlack` + `text-ccBlack` (e.g. *Find A Location* pill).
-
-**Cards (flavor tiles, promos)**
-
-- White or warm background, soft border **or** light shadow, rounded corners, clear label + short descriptor.
-- If showing nutrition or legal text, smaller type with adequate contrast; don’t dim below readable grey.
+- **Surface** large areas with **`#f4efda`** or **`#faf5eb`**; add **left border**, **top strip**, or **icon blob** in **blue** or **mint** so every block isn’t “cream + black text only.”
+- Flavor tiles: rotate **pink / blue / mint** for **accents** (tags, small fills) — not only pink.
+- **Typography** stays mostly `ccBlack` on pastels; check **contrast** (especially blue text on blue fill — often **black** for button labels).
 
 **Forms (newsletter signup)**
 
-- Large tap targets, inline validation, success toast with warm green — not system-default red only.
+- **Panel:** `bg-[#f4efda]` or mint-tint; **submit** can be **green** or **pink**; validation success leans **mint** (`#96dbb8`), not generic system green.
 
 ### Motion
 
@@ -98,13 +106,13 @@ Reference the live site for copy tone (locations, shipping, catering, weekly fla
 ### Accessibility
 
 - `aria-label` on icon-only controls; meaningful link text (not just “click here”).
-- Don’t rely on **pink** alone for state — add icon or text for errors/success.
-- Color contrast: especially pink on white; use darker pink or ink for small text on light backgrounds.
+- Don’t rely on a **single** pastel for state — use **icon + text**; success can lean **mint**; errors use a **clear** semantic red separate from the marketing palette.
+- Contrast: small text on **`#bcdce5`** or **`#96dbb8`** may need **ccBlack** or a darker border — verify WCAG for body copy and buttons.
 
 ### Stack alignment (if engineering)
 
 - Live site: **Next.js** + **Tailwind** + **Radix**-style primitives (e.g. `Dialog` for modals, `button` with `ring-offset-background`).
-- Map tokens to the production names: `ccBackground`, `ccPink`, `ccBlue`, `ccBlack`, `ccGreen`, `ccBackgroundDarker` in Tailwind `extend`.
+- In Tailwind `extend`, map `#f09fb1`, `#bcdce5`, `#f4efda`, `#96dbb8` (e.g. as `ccPink`, `ccBlue`, `ccCream`, `ccGreen`) **plus** `ccBackground` / `ccBlack` for parity with the live `cc*` scale.
 
 ---
 
