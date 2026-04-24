@@ -115,7 +115,7 @@ For repo `owner/repo` and skill slug `my-skill`:
 
 `https://skills.sh/owner/repo/my-skill`
 
-Example: `https://skills.sh/svemyh/skills/legora`  
+Example: `https://skills.sh/<org>/<repo>/<skill-slug>` (use your org and public repo path)  
 If that returns **404**, the repo is still **installable** from GitHub.
 
 ## When helping users “get on skills.sh”
