@@ -18,6 +18,7 @@ npx skills add svemyh/skills --skill agentic-oriented-programming
 npx skills add svemyh/skills --skill chip-city-cookies
 npx skills add svemyh/skills --skill anduril
 npx skills add svemyh/skills --skill skills-sh
+npx skills add svemyh/skills --skill legora
 ```
 
 ## skills.sh install pages
@@ -28,6 +29,7 @@ npx skills add svemyh/skills --skill skills-sh
 | `chip-city-cookies` | [skills.sh/…/chip-city-cookies](https://skills.sh/svemyh/skills/chip-city-cookies) |
 | `anduril` | [skills.sh/…/anduril](https://skills.sh/svemyh/skills/anduril) |
 | `skills-sh` | [skills.sh/…/skills-sh](https://skills.sh/svemyh/skills/skills-sh) |
+| `legora` | [skills.sh/…/legora](https://skills.sh/svemyh/skills/legora) |
 
 ## Included skills
 
@@ -35,6 +37,7 @@ npx skills add svemyh/skills --skill skills-sh
 - **`chip-city-cookies`** — UI constraints aligned with [chipcitycookies.com](https://chipcitycookies.com/) (warm bakery palette, marketing patterns).
 - **`anduril`** — Anduril-style product UI constraints (vendored from [adisinghstudent/anduril](https://github.com/adisinghstudent/anduril), MIT; see [NOTICE](NOTICE)). You can also `npx add-skill adisinghstudent/anduril` for the upstream single-repo install.
 - **`skills-sh`** — how GitHub + `npx` + [skills.sh](https://skills.sh) fit together (monorepo vs one skill per repo).
+- **`legora`** — [Legora](https://legora.com/)–style enterprise legal-AI marketing: hierarchy, lawyer-native tone, compliance-forward (not toy or consumer-cute UI).
 
 ## License
 
